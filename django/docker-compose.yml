@@ -1,0 +1,25 @@
+services:
+  cinder-backend:
+    build:
+      context: .
+      dockerfile: Dockerfile.cinder
+    container_name: django_cinder
+    ports:
+      - "8000:8000"
+    environment:
+      - PYTHONJIT=1
+      - PYTHONDONTWRITEBYTECODE=1
+      - PYTHONUNBUFFERED=1
+    restart: unless-stopped
+
+  standard-backend:
+    build:
+      context: .
+      dockerfile: Dockerfile.standard
+    container_name: django_standard
+    ports:
+      - "8001:8000"
+    environment:
+      - PYTHONDONTWRITEBYTECODE=1
+      - PYTHONUNBUFFERED=1
+    restart: unless-stopped
