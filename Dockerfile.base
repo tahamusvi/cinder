@@ -10,8 +10,7 @@ RUN apt-get update && apt-get install -y \
 
 WORKDIR /usr/src
 
-RUN git clone --depth 1 https://github.com/facebookincubator/cinder.git
-
+COPY cinder-meta-3.14 . 
 WORKDIR /usr/src/cinder
 
 RUN ./configure --enable-optimizations
